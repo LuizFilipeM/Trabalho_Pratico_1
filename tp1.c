@@ -2,24 +2,21 @@
 #include <stdlib.h>
 #include "tp1.h"
 
-typedef struct BigNum{
+struct celula{
     int valor;
-    BigNum* prox;
-} BigNum;
+    celula* prox;
+};
 
-
-typedef struct lista{
-    BigNum *primeiro, *ultimo;
-} lista;
-
+struct lista{
+    celula *primeiro;
+    celula *ultimo;
+};
 
 void cria_lista(lista *ls){
-    ls->primeiro = (BigNum*) malloc(sizeof(BigNum));
-    printf("aqui\n");
-
-    ls->ultimo = ls->primeiro;
+    ls = (lista*)malloc(sizeof(lista));
+    ls->primeiro = (celula*) malloc(sizeof(celula));
     ls->primeiro->prox = NULL;
-   
+    ls->ultimo = ls->primeiro;
 }
 
 int vazia(lista* ls){
@@ -27,19 +24,19 @@ int vazia(lista* ls){
 }
 
 void insere(lista *ls, int x){
-    ls->ultimo->prox = (BigNum*)malloc(sizeof(BigNum));
+    ls->ultimo->prox = (celula*)malloc(sizeof(celula));
     ls->ultimo = ls->ultimo->prox;
     ls->ultimo->valor = x;
     ls->ultimo->prox = NULL;
 }
 
-lista* int_to_big(int x){
-    lista *list;// = (lista*)malloc(sizeof(lista));
-    cria_lista(list);
+lista* int_to_big(int x, lista* list){
+    
     int temp;
     while(x != 0){
         temp = x % 10;
         insere(list, temp);
+        printf("aqui na insere");
         x = (x - temp)/10;
     }
     return list;
@@ -68,13 +65,6 @@ lista *subtrair(lista *x1, lista *x2){
     temp = x1->primeiro->valor - x2->primeiro->valor;
 
 }
-
-
-
-
-
-
-
 
 int* cria(){
     int *num;
