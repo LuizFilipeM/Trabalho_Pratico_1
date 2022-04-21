@@ -1,20 +1,13 @@
-// Definição de dados
-
-//typedef struct bignum BigNum;
-
-// TAD BigNum
-
-typedef struct BigNum BigNum;
+typedef struct celula celula;
 typedef struct lista lista;
-lista *int_to_big (int);
+lista *int_to_big (int, lista*);
 
-//lista 
-void cria_lista(lista*);
+ 
+void cria_lista(lista *);
 int vazia(lista*);
 void insere(lista*, int);
 
 
-// Definição das operacoes
 void criar();
 void destruir();
 lista *somar(lista*, lista*);
