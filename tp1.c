@@ -5,6 +5,7 @@
 struct celula{
     int valor;
     celula* prox;
+    celula* ant;
 };
 
 struct lista{
@@ -16,6 +17,7 @@ void cria_lista(lista *ls){
     ls = (lista*)malloc(sizeof(lista));
     ls->primeiro = (celula*) malloc(sizeof(celula));
     ls->primeiro->prox = NULL;
+    ls->primeiro->ant = NULL;
     ls->ultimo = ls->primeiro;
 }
 
@@ -25,6 +27,7 @@ int vazia(lista* ls){
 
 void insere(lista *ls, int x){
     ls->ultimo->prox = (celula*)malloc(sizeof(celula));
+    ls->ultimo->ant = ls->ultimo;
     ls->ultimo = ls->ultimo->prox;
     ls->ultimo->valor = x;
     
