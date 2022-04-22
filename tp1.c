@@ -27,6 +27,7 @@ void insere(lista *ls, int x){
     ls->ultimo->prox = (celula*)malloc(sizeof(celula));
     ls->ultimo = ls->ultimo->prox;
     ls->ultimo->valor = x;
+    
     ls->ultimo->prox = NULL;
 }
 
@@ -36,7 +37,6 @@ lista* int_to_big(int x, lista* list){
     while(x != 0){
         temp = x % 10;
         insere(list, temp);
-        printf("aqui na insere");
         x = (x - temp)/10;
     }
     return list;
@@ -73,9 +73,14 @@ int* cria(){
 }
 
 void imprimir(lista *B){
-    while(B->ultimo->prox->valor != 0){
-        printf("%d ", B->primeiro->valor);
-        B->primeiro = B->primeiro->prox;
+    celula *aux;
+    aux = B->primeiro;
+    printf("%d", B->ultimo->valor);
+    while(B != NULL){
+        
+        printf("%d ", aux->valor);
+        printf("\naqui\n");
+        aux = aux->prox; 
         printf("entrou");
     }
 }
