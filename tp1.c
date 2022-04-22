@@ -4,8 +4,8 @@
 
 struct celula{
     int valor;
-    celula* prox;
-    celula* ant;
+    celula *prox;
+    celula *ant;
 };
 
 struct lista{
@@ -27,8 +27,9 @@ int vazia(lista* ls){
 
 void insere(lista *ls, int x){
     ls->ultimo->prox = (celula*)malloc(sizeof(celula));
-    ls->ultimo->ant = ls->ultimo;
+    ls->ultimo->prox->ant = ls->ultimo;
     ls->ultimo = ls->ultimo->prox;
+
     ls->ultimo->valor = x;
     
     ls->ultimo->prox = NULL;
@@ -77,13 +78,9 @@ int* cria(){
 
 void imprimir(lista *B){
     celula *aux;
-    aux = B->primeiro;
-    printf("%d", B->ultimo->valor);
-    while(B != NULL){
-        
+    aux = B->ultimo;
+    for(int i=0; i<2; i++){
         printf("%d ", aux->valor);
-        printf("\naqui\n");
-        aux = aux->prox; 
-        printf("entrou");
+        aux = aux->ant; 
     }
 }
