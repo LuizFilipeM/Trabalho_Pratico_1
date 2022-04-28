@@ -3,10 +3,15 @@
 #include "tp1.h"
 
 void main(){
-    int num;
-    lista *list; 
-    cria_lista(list);
-    scanf("%d", &num);
-    list = int_to_big(num,list);
-    imprimir(list);
+    int x, y;
+    lista *list1, *list2, *resultado; 
+    list1 = cria_lista(list1);
+    list2 = cria_lista(list2);
+    resultado = cria_lista(resultado);
+    scanf("%d", &x);
+    scanf("%d", &y);
+    int_to_big(x, list1);
+    int_to_big(y, list2);
+    resultado = somar(list1, list2);
+    imprimir(resultado);
 }
