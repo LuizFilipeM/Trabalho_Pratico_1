@@ -2,9 +2,11 @@ typedef struct celula celula;
 typedef struct lista lista;
 lista *int_to_big (int, lista*);
 
-void cria_lista(lista *);
+ 
+lista* cria_lista(lista *);
 int vazia(lista*);
 void insere(lista*, int);
+
 
 void criar();
 void destruir();
